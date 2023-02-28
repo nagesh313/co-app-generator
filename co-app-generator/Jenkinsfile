@@ -1,0 +1,26 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Checkout') { 
+            steps {
+                echo 'Checkout..'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'bitbucket', url: 'http://bitbucket:7990/scm/credapp/co-app-generator.git']])
+            }
+        }
+        stage('Build') { 
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') { 
+            steps {
+               echo 'Testing..'
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                echo 'Deploying..'
+            }
+        }
+    }
+}
